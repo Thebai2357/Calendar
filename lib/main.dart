@@ -78,28 +78,6 @@ class _CalendarPageState extends State<CalendarPage>{
         onPressed: _addEvent,
         child: const Icon(Icons.add),
         ),
-      // body: TableCalendar(
-      //   firstDay: DateTime.utc(2000,1,1),
-      //   lastDay: DateTime.utc(2100,12,31),
-      //   focusedDay: _focusedDay,
-      //   selectedDayPredicate: (day){
-      //     return isSameDay(_selectedDay, day);
-      //   },
-      //   onDaySelected: (selectedDay,focusedDay){
-      //     setState(() {
-      //       _selectedDay = selectedDay;
-      //       _focusedDay = focusedDay;
-      //     });
-      //   },
-      // ),
-
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: (){
-
-      //   },
-      //   child: Icon(Icons.add),
-      // ),
-    
     );
   }
 
