@@ -46,14 +46,14 @@ class _CalendarPageState extends State<CalendarPage>{
             eventLoader: _getEventsForDay,
             onDaySelected: (selectedDay,focusedDay){
               setState((){
-                _selectedDay = selectedDay;
-                _focusedDay  = focusedDay;
+                _selectedDay = _getDataOnly(selectedDay);
+                _focusedDay  = _getDataOnly(focusedDay);
               });
             },
           ),
           Expanded(
             child: ListView(
-              children: _getEventsForDay(_selectedDay ?? _focusedDay)
+              children: _getEventsForDay(_selectedDay)
               .map((event)=> ListTile(
                 title: Text(event.title),
               ))
@@ -99,10 +99,11 @@ class _CalendarPageState extends State<CalendarPage>{
             onPressed: (){
               if (eventTitle.isEmpty) return;
               setState(() {
-                if (_events[_selectedDay]!= null){
-                  _events[_selectedDay]!.add(Event(eventTitle));
+                DateTime selectedDayOnly = _getDataOnly(_selectedDay);
+                if (_events[selectedDayOnly]!= null){
+                  _events[selectedDayOnly]!.add(Event(eventTitle));
                 } else {
-                  _events[_selectedDay] = [Event(eventTitle)];
+                  _events[selectedDayOnly] = [Event(eventTitle)];
                 }
               });
               Navigator.pop(context);
